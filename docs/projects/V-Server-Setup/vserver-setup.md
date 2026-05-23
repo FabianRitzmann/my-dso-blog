@@ -156,8 +156,6 @@ cat ~/.ssh/github_server.pub
 
 5. Click: `Save`
 
-   
-### Summary
 
 ## Summary
 
