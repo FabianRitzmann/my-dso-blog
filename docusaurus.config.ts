@@ -89,6 +89,12 @@ const config: Config = {
           label: 'Docs',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Info',
+        },
+        {
           href: 'https://github.com/spmse/dev-blog-template',
           label: 'Github',
           position: 'right',
@@ -134,7 +140,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sven Patrick Meier (spmse). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Fabian Ritzmann.`,
     },
     prism: {
       theme: prismThemes.github,
