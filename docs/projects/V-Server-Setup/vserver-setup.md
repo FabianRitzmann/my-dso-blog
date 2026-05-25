@@ -23,7 +23,7 @@ First of all, what is a V-Server? A V-Server is a virtual server that runs as a 
 
 ##  Step by step setup of a V-Server 
 
-1. ### Create an SSH key pair
+### 1. Create an SSH key pair
 
 First, generate an SSH key pair on your local machine. This key will be used for secure authentication.
 
@@ -36,7 +36,7 @@ First, generate an SSH key pair on your local machine. This key will be used for
      
    - To display the public key: `cat` 
 
-2. ### Connect to the V-Server via SSH
+### 2. Connect to the V-Server via SSH
 
 Next, connect to your server using SSH. The first login is usually done with a username and password provided by your hoster.
 
@@ -45,7 +45,7 @@ Next, connect to your server using SSH. The first login is usually done with a u
    ```
 After entering the command, you will be prompted to enter your password.
 
-3. ### Add your public key to the server
+### 3. Add your public key to the server
 
 To enable passwordless login, copy your public key to the server:
 
@@ -69,7 +69,7 @@ To verify that the key was added successfully, you can check:
    $ cat ~/.ssh/authorized_keys
    ```
 
-4. ### Disable password authentication
+### 4. Disable password authentication
 
 For better security, you can disable password login so that only SSH key authentication is allowed.
 
@@ -81,7 +81,7 @@ Find the following line: `#PasswordAuthentication yes` and change it to: `#Passw
 
 Restart the SSH service to apply the changes: `sudo systemctl restart ssh.service`
 
-5. ### Create an alias for easier access
+### 5. Create an alias for easier access
 
 To simplify logging in, you can create an alias or function in your shell configuration file.
 
@@ -91,9 +91,9 @@ Bash (Linux/macOS)
 
 To create a simple alias in Bash, you can use:
 
-```
-    $ alias name="command"
-    ```
+ ```
+   $ alias name=""
+   ```
 
 PowerShell (Windows)
 
