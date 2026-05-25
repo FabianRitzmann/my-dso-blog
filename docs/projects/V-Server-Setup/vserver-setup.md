@@ -166,23 +166,27 @@ sudo nano /etc/nginx/sites-enabled/alternatives
 Insert the following content:
 ```
 server {
-    listen 80;
-    server_name _;
+    listen 8081;
+    listen [::]:8081;
 
     root /var/www/alternatives;
-    index alternate-index.html;
+    index main.html;
 
     location / {
         try_files $uri $uri/ =404;
     }
 }
 ```
+Restart Nginx:`sudo service nginx restart`
+
 ## Configuring Git on the V-server (Name & Email)
 
 ```
 git config --global user.name "Fabian Ritzmann"
 git config --global user.email "email@example.com" 
 ```
+Check it:`git config --global --list`
+
 ## Create an SSH key on the server
 Generate an SSH key pair on your server. This key will be used later to securely connect to GitHub.
 ```
@@ -209,6 +213,7 @@ cat ~/.ssh/github_server.pub
 
 5. Click: `Save`
 
+6. Test: `ssh -i ~/.ssh/github_server -T git@github.com`
 
 ## Summary
 
