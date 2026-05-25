@@ -182,7 +182,7 @@ Restart Nginx:`sudo service nginx restart`
 ## Configuring Git on the V-server (Name & Email)
 
 ```
-git config --global user.name "Fabian Ritzmann"
+git config --global user.name "FabianRitzmann"
 git config --global user.email "email@example.com" 
 ```
 Check it:`git config --global --list`
