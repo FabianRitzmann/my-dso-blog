@@ -75,9 +75,11 @@ For better security, you can disable password login so that only SSH key authent
 
  🚨 Make sure your SSH key login works before disabling password authentication, otherwise you may lock yourself out.
     
-    1. Open the SSH daemon configuration file: `sudo nano /etc/ssh/sshd_config`
-    2. Find the following line: `#PasswordAuthentication yes` and change it to: `#PasswordAuthentication no`
-    3. Restart the SSH service to apply the changes: `sudo systemctl restart ssh.service`
+Open the SSH daemon configuration file: `sudo nano /etc/ssh/sshd_config`
+
+Find the following line: `#PasswordAuthentication yes` and change it to: `#PasswordAuthentication no`
+
+Restart the SSH service to apply the changes: `sudo systemctl restart ssh.service`
 
 5. ### Create an alias for easier access
 
@@ -104,7 +106,7 @@ Create a function in PowerShell:
 ```
    $ function v_server_connect {ssh -o StrictHostKeyChecking=no -i $HOME\.ssh\demo_ed225519 username@server-ip}
    ``` 
-   
+
 Then you can connect to the server simply by running: `v_server_connect`
 
 
