@@ -53,6 +53,7 @@ You can use `ssh-copy-id`:
  ```
    $ ssh-copy-id -i ~/.ssh/demo_ed225519.pub username@server-ip
    ```
+
 If this does not work, you can use the manual method:
 
  ```
@@ -230,3 +231,5 @@ It includes:
 - Configuring Git on the server
 - Generating and adding an SSH key for GitHub integration
 
+### Loom Video
+- [Loom Video](https://go.screenpal.com/watch/cOhT2jnt73s)
