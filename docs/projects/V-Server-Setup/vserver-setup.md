@@ -23,7 +23,8 @@ First of all, what is a V-Server? A V-Server is a virtual server that runs as a 
 
 ##  Step by step setup of a V-Server 
 
-1. Create an SSH key pair
+1. ### Create an SSH key pair
+
 First, generate an SSH key pair on your local machine. This key will be used for secure authentication.
 
  ```
@@ -35,33 +36,41 @@ First, generate an SSH key pair on your local machine. This key will be used for
      
    - To display the public key: `cat` 
 
-2. Connect to the V-Server via SSH
+2. ### Connect to the V-Server via SSH
+
 Next, connect to your server using SSH. The first login is usually done with a username and password provided by your hoster.
+
  ```
    $ ssh username@server-ip
    ```
 After entering the command, you will be prompted to enter your password.
 
-3. Add your public key to the server
+3. ### Add your public key to the server
+
 To enable passwordless login, copy your public key to the server:
+
 You can use `ssh-copy-id`: 
  ```
    $ ssh-copy-id -i ~/.ssh/demo_ed225519.pub username@server-ip
    ```
 If this does not work, you can use the manual method:
+
  ```
    $ type $HOME\.ssh\demo_ed225519.pub | ssh username@server-ip "cat >> .ssh/authorized_keys"
    ```
+
 Confirm the prompt by entering your password. This will copy the public key to the server. Afterwards, test the connection.
  ```
    $ ssh -i  $HOME\.ssh\demo_ed225519 username@server-ip 
    ```
+
 To verify that the key was added successfully, you can check:
  ```
    $ cat ~/.ssh/authorized_keys
    ```
 
-4. Disable password authentication
+4. ### Disable password authentication
+
 For better security, you can disable password login so that only SSH key authentication is allowed.
 
  🚨 Make sure your SSH key login works before disabling password authentication, otherwise you may lock yourself out.
@@ -70,7 +79,8 @@ For better security, you can disable password login so that only SSH key authent
     2. Find the following line: `#PasswordAuthentication yes` and change it to: `#PasswordAuthentication no`
     3. Restart the SSH service to apply the changes: `sudo systemctl restart ssh.service`
 
-5. Create an alias for easier access
+5. ### Create an alias for easier access
+
 To simplify logging in, you can create an alias or function in your shell configuration file.
 
 The alias command itself does not provide help options, but you can access documentation via man alias, which can be useful for further reference.
@@ -78,9 +88,11 @@ The alias command itself does not provide help options, but you can access docum
 Bash (Linux/macOS)
 
 To create a simple alias in Bash, you can use:
+
 ```
     $ alias name="command"
     ```
+
 PowerShell (Windows)
 
 In PowerShell, Bash-style aliases like the following do not work.
@@ -88,9 +100,11 @@ In PowerShell, Bash-style aliases like the following do not work.
 Instead, you should use a function.
 
 Create a function in PowerShell:
+
 ```
    $ function v_server_connect {ssh -o StrictHostKeyChecking=no -i $HOME\.ssh\demo_ed225519 username@server-ip}
    ``` 
+   
 Then you can connect to the server simply by running: `v_server_connect`
 
 
