@@ -111,9 +111,10 @@ Create a function in PowerShell:
 Then you can connect to the server simply by running: `v_server_connect`
 
 
+
 ---
 
-## Install Nginx Web Server
+# Install Nginx Web Server
 
 Nginx is a lightweight and fast web server used to host websites and applications.
 
