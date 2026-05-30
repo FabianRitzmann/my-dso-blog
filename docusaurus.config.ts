@@ -9,12 +9,12 @@ dotenvconfig();
 const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
 
 const config: Config = {
-  title: 'Fabian Ritzmann - Learning Journal & Portfolio',
+  title: 'Learning Journal & Portfolio',
   tagline: 'Fabian Ritzmann – Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? "https://fabianritzmann.github.io",
+  url: process.env.DEPLOYMENT_URL ?? "https://fabianritzmann.github.io/my-dso-blog/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.BASE_URL ?? "/my-dso-blog/",
