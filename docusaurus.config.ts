@@ -7,14 +7,16 @@ dotenvconfig();
 
 /* TODO: change to read configuration from environment */
 const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
-const repoUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/FabianRitzmann/my-dso-blog";
+
+const gitRepositoryUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/FabianRitzmann/my-dso-blog";
+
 const config: Config = {
   title: 'Learning Journal & Portfolio',
   tagline: 'Fabian Ritzmann – Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? "https://fabianritzmann.github.io",
+  url: process.env.DEPLOYMENT_URL ?? `https://${process.env.GITHUB_ORG}.github.io`,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.BASE_URL ?? "/my-dso-blog/",
@@ -46,7 +48,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            `${repoUrl}/edit/main`,
+            `${gitRepositoryUrl}/edit/main`,
         },
         blog: blogEnabled ? 
           {
@@ -58,7 +60,7 @@ const config: Config = {
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
             editUrl:
-              `${repoUrl}/edit/main`,
+              `${gitRepositoryUrl}/edit/main`,
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -76,20 +78,21 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
-      logo: {
+      title: 'About me',
+      /* logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
-      },
+      }, */
+      
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Docs',
+          label: 'My projects',
         },
         {
-          href: repoUrl,
+          href: gitRepositoryUrl,
           label: 'Github',
           position: 'right',
         },
@@ -105,22 +108,9 @@ const config: Config = {
               label: 'Tutorial',
               to: '/docs/guides/intro',
             },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+             {
+              label: 'Projects',
+              to: '/docs/projects',
             },
           ],
         },
@@ -129,12 +119,16 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: gitRepositoryUrl,
+            },
+            {
+              label: 'Template',
+              href: 'https://github.com/Developer-Akademie-DevSecOpsKurs/dev-blog-template',
             }
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Fabian Ritzmann.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Fabian Ritzmann - extended from the developer-akademie-starter`,
     },
     prism: {
       theme: prismThemes.github,
