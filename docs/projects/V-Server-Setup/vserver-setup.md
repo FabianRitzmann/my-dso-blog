@@ -118,7 +118,6 @@ Then you can connect to the server simply by running: `v_server_connect`
 
 Nginx is a lightweight and fast web server used to host websites and applications.
 
-
 ### 1. Update package list and install Nginx
 
 ```
