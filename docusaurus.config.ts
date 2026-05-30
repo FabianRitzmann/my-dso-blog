@@ -7,7 +7,8 @@ dotenvconfig();
 
 /* TODO: change to read configuration from environment */
 const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
-const repoUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/FabianRitzmann/my-dso-blog";
+const gitRepositoryUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/FabianRitzmann/my-dso-blog";
+
 const config: Config = {
   title: 'Learning Journal & Portfolio',
   tagline: 'Fabian Ritzmann – Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
@@ -46,7 +47,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            `${repoUrl}/edit/main`,
+            `${gitRepositoryUrl}/edit/main`,
         },
         blog: blogEnabled ? 
           {
@@ -58,7 +59,7 @@ const config: Config = {
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
             editUrl:
-              `${repoUrl}/edit/main`,
+              `${gitRepositoryUrl}/edit/main`,
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -74,13 +75,13 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+   // image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'My Site',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+    // logo: {
+    //    alt: 'My Site Logo',
+    //    src: 'img/logo.svg',
+    //  },
       items: [
         {
           type: 'docSidebar',
@@ -89,7 +90,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: repoUrl,
+          href: gitRepositoryUrl,
           label: 'Github',
           position: 'right',
         },
