@@ -9,7 +9,8 @@ This project is based on the Docusaurus starter template and was customized to c
 1. [Configuration docusaurus.config.ts](#configuration-docusaurusconfigts)
 2. [Configuration README.md](#configuration-readmemd)
 3. [Configuration on GitHub](#configuration-on-github)
-4. [Summary](#summary)
+4. [Remove Docusaurus Tutorial Link from Homepage](#remove-docusaurus-tutorial-link-from-homepage) 
+5. [Summary](#summary)
 
 ---
 
@@ -96,6 +97,16 @@ Several changes were made inside the docusaurus.config.ts file:
 
 - Additionally, under Actions → General, the workflow permissions were updated to `Read and write permissions`.
 
+## Remove Docusaurus Tutorial Link from Homepage
+
+- The link to the Docusaurus Tutorial was removed from the homepage `src/pages/index.ts`.
+ ```
+      <Link
+        className="button button--secondary button--lg"
+        to="/docs/guides/intro">
+        Docusaurus Tutorial - 5min ⏱️
+    </Link>
+        ```
 
 ## Summary
 
