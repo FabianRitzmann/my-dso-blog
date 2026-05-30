@@ -13,7 +13,7 @@ const gitRepositoryUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/F
 const config: Config = {
   title: 'Learning Journal & Portfolio',
   tagline: 'Fabian Ritzmann – Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
-  favicon: 'img/favicon.ico',
+  /* favicon: 'img/favicon.ico', */
 
   // Set the production url of your site here
   url: process.env.DEPLOYMENT_URL ?? `https://${process.env.GITHUB_ORG}.github.io`,
