@@ -104,10 +104,13 @@ Several changes were made inside the docusaurus.config.ts file:
       <Link
         className="button button--secondary button--lg"
         to="/docs/guides/intro">
-        Docusaurus Tutorial - 5min ⏱️
+        Docusaurus Tutorial - 5min 
     </Link>
-        ```
+   ```     
 
 ## Summary
 
 This project was fully customized from the original Docusaurus starter template. Environment variables were introduced for better configurability, repository links were centralized, and the project was prepared for automated deployment using GitHub Actions and GitHub Pages.
+
+### Loom Video
+- [Loom Video](https://go.screenpal.com/watch/cOhvF3nuVtT)
