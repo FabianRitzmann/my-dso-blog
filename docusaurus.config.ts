@@ -12,10 +12,10 @@ const gitRepositoryUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/F
 const config: Config = {
   title: 'Learning Journal & Portfolio',
   tagline: 'Fabian Ritzmann – Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
-  favicon: 'img/favicon.ico',
+  /* favicon: 'img/favicon.ico', */
 
   // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? "https://fabianritzmann.github.io",
+  url: process.env.DEPLOYMENT_URL ?? `https://${process.env.GITHUB_ORG}.github.io`,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.BASE_URL ?? "/my-dso-blog/",
@@ -87,7 +87,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Docs',
+          label: 'My projects',
         },
         {
           href: gitRepositoryUrl,
@@ -106,22 +106,9 @@ const config: Config = {
               label: 'Tutorial',
               to: '/docs/guides/intro',
             },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+             {
+              label: 'Projects',
+              to: '/docs/projects/overview',
             },
           ],
         },
@@ -130,12 +117,16 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: gitRepositoryUrl,
+            },
+            {
+              label: 'Template',
+              href: 'https://github.com/Developer-Akademie-DevSecOpsKurs/dev-blog-template',
             }
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Fabian Ritzmann.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Fabian Ritzmann - extended from the developer-akademie-starter`,
     },
     prism: {
       theme: prismThemes.github,
