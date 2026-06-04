@@ -76,7 +76,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Fabian Ritzmann',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -87,6 +87,12 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Info',
         },
         {
           href: 'https://github.com/spmse/dev-blog-template',
@@ -134,7 +140,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sven Patrick Meier (spmse). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Fabian Ritzmann.`,
     },
     prism: {
       theme: prismThemes.github,
