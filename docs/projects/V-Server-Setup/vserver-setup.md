@@ -25,9 +25,9 @@ First of all, what is a V-Server? A V-Server is a virtual server that runs as a 
 
 First, generate an SSH key pair on your local machine. This key will be used for secure authentication.
 
- ```
-   ssh-keygen -t ed25519
-   ```
+```
+ssh-keygen -t ed25519
+```
   You will be asked where to save the key. You can either press Enter to accept the default location or specify a custom path.
 
    - To view the contents of the directory: `ls`
@@ -38,9 +38,9 @@ First, generate an SSH key pair on your local machine. This key will be used for
 
 Next, connect to your server using SSH. The first login is usually done with a username and password provided by your hoster.
 
- ```
-   ssh <username>@<server-ip>
-   ```
+```
+ssh <username>@<server-ip>
+```
 After entering the command, you will be prompted to enter your password.
 
 ### 3. Add your public key to the server
@@ -48,25 +48,25 @@ After entering the command, you will be prompted to enter your password.
 To enable passwordless login, copy your public key to the server:
 
 You can use `ssh-copy-id`: 
- ```
-   ssh-copy-id -i ~/.ssh/demo_ed225519.pub <username>@<server-ip>
-   ```
+```
+ssh-copy-id -i ~/.ssh/demo_ed225519.pub <username>@<server-ip>
+```
 
 If this does not work, you can use the manual method:
 
- ```
-   type $HOME\.ssh\demo_ed225519.pub | ssh <username>@<server-ip> "cat >> .ssh/authorized_keys"
-   ```
+```
+type $HOME\.ssh\demo_ed225519.pub | ssh <username>@<server-ip> "cat >> .ssh/authorized_keys"
+```
 
 Confirm the prompt by entering your password. This will copy the public key to the server. Afterwards, test the connection.
- ```
-   ssh -i  $HOME\.ssh\demo_ed225519 <username>@<server-ip> 
-   ```
+```
+ssh -i  $HOME\.ssh\demo_ed225519 <username>@<server-ip> 
+```
 
 To verify that the key was added successfully, you can check:
- ```
-  cat ~/.ssh/authorized_keys
-   ```
+```
+cat ~/.ssh/authorized_keys
+```
 
 ### 4. Disable password authentication
 
@@ -88,8 +88,8 @@ To simplify logging in, you can create a PowerShell function in your PowerShell 
 Create the following function in your PowerShell profile:
 
 ```
-   function v_server_connect {ssh -o StrictHostKeyChecking=no -i $HOME\.ssh\demo_ed225519 <username>@<server-ip>}
-   ``` 
+function v_server_connect {ssh -o StrictHostKeyChecking=no -i $HOME\.ssh\demo_ed225519 <username>@<server-ip>}
+``` 
 
 Then you can connect to the server simply by running: `v_server_connect`
 
