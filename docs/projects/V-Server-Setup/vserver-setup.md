@@ -1,8 +1,7 @@
 # V-Server Setup
 
-his document explains how to set up and access a virtual server (V-Server) using SSH and how to configure and install a web server (Nginx).
+This document explains how to set up and access a virtual server (V-Server) using SSH and how to configure and install a web server (Nginx).
 
----
 
 # Table of Contents
 
@@ -16,7 +15,6 @@ his document explains how to set up and access a virtual server (V-Server) using
 8. [Create SSH Key for GitHub](#create-ssh-key-for-github)  
 9. [Add SSH Key to GitHub](#add-ssh-key-to-github)
 
----
 
 ##  Explanation of a V-Server 
 First of all, what is a V-Server? A V-Server is a virtual server that runs as a virtual machine on physical hardware. It allows you to run programs and host services on it. In other words, a V-Server is not a physical server that you can touch. Instead, it is created through virtualization on a real machine and shares its resources with other virtual servers.
@@ -27,9 +25,9 @@ First of all, what is a V-Server? A V-Server is a virtual server that runs as a 
 
 First, generate an SSH key pair on your local machine. This key will be used for secure authentication.
 
- ```
-   $ ssh-keygen -t ed25519
-   ```
+```
+ssh-keygen -t ed25519
+```
   You will be asked where to save the key. You can either press Enter to accept the default location or specify a custom path.
 
    - To view the contents of the directory: `ls`
@@ -40,9 +38,9 @@ First, generate an SSH key pair on your local machine. This key will be used for
 
 Next, connect to your server using SSH. The first login is usually done with a username and password provided by your hoster.
 
- ```
-   $ ssh username@server-ip
-   ```
+```
+ssh <username>@<server-ip>
+```
 After entering the command, you will be prompted to enter your password.
 
 ### 3. Add your public key to the server
@@ -50,31 +48,32 @@ After entering the command, you will be prompted to enter your password.
 To enable passwordless login, copy your public key to the server:
 
 You can use `ssh-copy-id`: 
- ```
-   $ ssh-copy-id -i ~/.ssh/demo_ed225519.pub username@server-ip
-   ```
+```
+ssh-copy-id -i ~/.ssh/demo_ed225519.pub <username>@<server-ip>
+```
 
 If this does not work, you can use the manual method:
 
- ```
-   $ type $HOME\.ssh\demo_ed225519.pub | ssh username@server-ip "cat >> .ssh/authorized_keys"
-   ```
+```
+type $HOME\.ssh\demo_ed225519.pub | ssh <username>@<server-ip> "cat >> .ssh/authorized_keys"
+```
 
 Confirm the prompt by entering your password. This will copy the public key to the server. Afterwards, test the connection.
- ```
-   $ ssh -i  $HOME\.ssh\demo_ed225519 username@server-ip 
-   ```
+```
+ssh -i  $HOME\.ssh\demo_ed225519 <username>@<server-ip> 
+```
 
 To verify that the key was added successfully, you can check:
- ```
-   $ cat ~/.ssh/authorized_keys
-   ```
+```
+cat ~/.ssh/authorized_keys
+```
 
 ### 4. Disable password authentication
 
 For better security, you can disable password login so that only SSH key authentication is allowed.
 
- 🚨 Make sure your SSH key login works before disabling password authentication, otherwise you may lock yourself out.
+> [!WARNING]
+> Make sure your SSH key login works before disabling password authentication, otherwise you may lock yourself out.
     
 Open the SSH daemon configuration file: `sudo nano /etc/ssh/sshd_config`
 
@@ -84,32 +83,15 @@ Restart the SSH service to apply the changes: `sudo systemctl restart ssh.servic
 
 ### 5. Create an alias for easier access
 
-To simplify logging in, you can create an alias or function in your shell configuration file.
+To simplify logging in, you can create a PowerShell function in your PowerShell profile. This allows you to connect to the server with a short command instead of typing the full SSH command each time.
 
-The alias command itself does not provide help options, but you can access documentation via man alias, which can be useful for further reference.
-
-Bash (Linux/macOS)
-
-To create a simple alias in Bash, you can use:
-
- ```
-   $ alias name=""
-   ```
-
-PowerShell (Windows)
-
-In PowerShell, Bash-style aliases like the following do not work.
-
-Instead, you should use a function.
-
-Create a function in PowerShell:
+Create the following function in your PowerShell profile:
 
 ```
-   $ function v_server_connect {ssh -o StrictHostKeyChecking=no -i $HOME\.ssh\demo_ed225519 username@server-ip}
-   ``` 
+function v_server_connect {ssh -o StrictHostKeyChecking=no -i $HOME\.ssh\demo_ed225519 <username>@<server-ip>}
+``` 
 
 Then you can connect to the server simply by running: `v_server_connect`
-
 
 
 ---
@@ -117,7 +99,6 @@ Then you can connect to the server simply by running: `v_server_connect`
 # Install Nginx Web Server
 
 Nginx is a lightweight and fast web server used to host websites and applications.
-
 
 ### 1. Update package list and install Nginx
 
@@ -184,7 +165,7 @@ Restart Nginx:`sudo service nginx restart`
 ## Configuring Git on the V-server (Name & Email)
 
 ```
-git config --global user.name "FabianRitzmann"
+git config --global user.name "<your_username>"
 git config --global user.email "email@example.com" 
 ```
 Check it:`git config --global --list`
@@ -231,6 +212,3 @@ It includes:
 - Setting up a custom website with Nginx
 - Configuring Git on the server
 - Generating and adding an SSH key for GitHub integration
-
-### Loom Video
-- [Loom Video](https://go.screenpal.com/watch/cOhT2jnt73s)
