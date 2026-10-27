@@ -34,29 +34,29 @@ This repository documents security challenges solved on the [OWASP Juice Shop](h
 
 | # | Challenge | Category | Difficulty | Write-up |
 |---|-----------|----------|------------|----------|
-| 1 | Login Bjoern | Broken Authentication | ★★★ | [View](./Challange-Login%20Bjoern/README.md) |
-| 2 | Server-side XSS Protection | Cross-Site Scripting (XSS) | ★★★ | [View](./Challange-2/README.md) |
-| 3 | Two Factor Authentication (wurstbrot) | Broken Authentication | ★★★ | [View](./Challange-3/README.md) |
+| 1 | Login Bjoern | Broken Authentication | ★★★★ | [View](./01-login-bjoern/README.md) |
+| 2 | Server-side XSS Protection | Cross-Site Scripting (XSS) | ★★★★ | [View](./02-server-side-xss-protection/README.md) |
+| 3 | Two Factor Authentication (wurstbrot) | Broken Authentication | ★★★★★ | [View](./03-two-factor-authentication/README.md) |
 
 ### 1. Broken Authentication – Login Bjoern
 
 Logging into Bjoern's Google-linked account by exploiting a predictable, client-side password-generation scheme used for OAuth sign-ins, without changing his password, using SQL Injection, or compromising his Google account.
 
-➡️ Full write-up: [`Challange-Login Bjoern/README.md`](./Challange-Login%20Bjoern/README.md)
+➡️ Full write-up: [`01-login-bjoern/README.md`](./01-login-bjoern/README.md)
 🎥 Video: [Watch on Loom](https://somup.com/cO6YFzVfns1)
 
 ### 2. Server-side XSS Protection
 
 Performing a persisted XSS attack with a nested `<iframe src="javascript:alert('xss')">` payload, bypassing a server-side sanitization filter that only strips a disallowed tag once instead of re-checking its own output.
 
-➡️ Full write-up: [`Challange-2/README.md`](./Challange-2/README.md)
+➡️ Full write-up: [`02-server-side-xss-protection/README.md`](./02-server-side-xss-protection/README.md)
 🎥 Video: [Watch on ScreenPal](https://go.screenpal.com/watch/cO6YYyny02M)
 
 ### 3. Broken Authentication – Two Factor Authentication (wurstbrot)
 
 Solving the 2FA challenge for user wurstbrot by generating a genuine, valid TOTP code (combining a SQL-Injection login bypass with a TOTP secret exposed in the application's public source code), without disabling, bypassing, or overwriting the account's 2FA settings.
 
-➡️ Full write-up: [`Challange-3/README.md`](./Challange-3/README.md)
+➡️ Full write-up: [`03-two-factor-authentication/README.md`](./03-two-factor-authentication/README.md)
 🎥 Video: [Watch on ScreenPal](https://go.screenpal.com/watch/cO63YcnyUXV)
 
 ## Disclaimer
