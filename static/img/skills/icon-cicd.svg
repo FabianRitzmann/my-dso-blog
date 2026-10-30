@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="CI/CD with GitHub Actions">
+  <g fill="none" stroke="#0B7BF2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="14" cy="12" r="9"/>
+    <path d="M14 21v28"/>
+    <path d="M14 31h12a6 6 0 0 0 6-6"/>
+    <path d="M14 47h18"/>
+    <circle cx="40" cy="26" r="7"/>
+    <circle cx="40" cy="47" r="7"/>
+    <path d="M36.500 26l2.500 2.500 4.500-4.500"/>
+    <path d="M36.500 47l2.500 2.500 4.500-4.500"/>
+    <circle cx="56" cy="47" r="4"/>
+    <path d="M47 47h5"/>
+  </g>
+  <path d="M11 8l7.500 4-7.500 4z" fill="#0B7BF2"/>
+</svg>
