@@ -51,7 +51,6 @@ export default function Contact({email, linkedinUrl}: ContactProps): ReactNode {
           </ul>
         </div>
         <div className={styles.right}>
-          <p className={styles.lead}>Looking forward to hearing from you!</p>
           <ul className={styles.links}>
             {email ? (
               <li>
