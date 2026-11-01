@@ -1,0 +1,36 @@
+.header {
+  background: var(--pf-green);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.5rem;
+  max-width: var(--pf-width);
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0;
+}
+
+.link {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    gap: 0.5rem 1.5rem;
+    padding: 1rem 1rem 0;
+  }
+}
