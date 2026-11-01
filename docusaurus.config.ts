@@ -1,41 +1,49 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import {config as dotenvconfig}  from "dotenv";
+import {config as dotenvconfig} from 'dotenv';
 
 dotenvconfig();
 
-/* TODO: change to read configuration from environment */
-const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
-const gitRepositoryUrl = process.env.GIT_REPOSITORY_URL ?? "https://github.com/FabianRitzmann/my-dso-blog";
+const blogEnabled = process.env.BLOG_ENABLED === 'true';
+const githubOrg = process.env.GITHUB_ORG;
+const githubProject = process.env.GITHUB_PROJECT;
+
+const gitRepositoryUrl =
+  process.env.GIT_REPOSITORY_URL ??
+  (githubOrg && githubProject ? `https://github.com/${githubOrg}/${githubProject}` : '');
+const baseUrl = process.env.BASE_URL ?? (githubProject ? `/${githubProject}/` : '/');
 
 const config: Config = {
   title: 'Learning Journal & Portfolio',
-  tagline: 'Fabian Ritzmann – Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
-  /* favicon: 'img/favicon.ico', */
+  tagline: 'Junior IT Service Manager on the path to becoming a DevSecOps Specialist',
 
-  // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? `https://${process.env.GITHUB_ORG}.github.io`,
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL ?? "/my-dso-blog/",
+  // Production URL and base path come from the environment (see example.env)
+  url:
+    process.env.DEPLOYMENT_URL ??
+    (githubOrg ? `https://${githubOrg}.github.io` : 'http://localhost:3000'),
+  baseUrl,
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: process.env.GITHUB_ORG, // Usually your GitHub org/user name.
-  projectName: process.env.GITHUB_PROJECT, // Usually your repo name.
-
+  // GitHub pages deployment config
+  organizationName: githubOrg,
+  projectName: githubProject,
   deploymentBranch: process.env.DEPLOYMENT_BRANCH,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+  },
+
+  // Values read by the portfolio page (src/pages/index.tsx)
+  customFields: {
+    contactEmail: process.env.CONTACT_EMAIL,
+    linkedinUrl: process.env.LINKEDIN_URL,
+    legalNotice: process.env.LEGAL_NOTICE,
+    githubProfileUrl: githubOrg ? `https://github.com/${githubOrg}` : undefined,
+    repositoryUrl: gitRepositoryUrl || undefined,
   },
 
   presets: [
@@ -44,27 +52,20 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            `${gitRepositoryUrl}/edit/main`,
+          editUrl: gitRepositoryUrl ? `${gitRepositoryUrl}/edit/main` : undefined,
         },
-        blog: blogEnabled ? 
-          {
-            showReadingTime: true,
-            feedOptions: {
-              type: ['rss', 'atom'],
-              xslt: true,
-            },
-            // Please change this to your repo.
-            // Remove this to remove the "edit this page" links.
-            editUrl:
-              `${gitRepositoryUrl}/edit/main`,
-            // Useful options to enforce blogging best practices
-            onInlineTags: 'warn',
-            onInlineAuthors: 'warn',
-            onUntruncatedBlogPosts: 'warn',
-          }
+        blog: blogEnabled
+          ? {
+              showReadingTime: true,
+              feedOptions: {
+                type: ['rss', 'atom'],
+                xslt: true,
+              },
+              editUrl: gitRepositoryUrl ? `${gitRepositoryUrl}/edit/main` : undefined,
+              onInlineTags: 'warn',
+              onInlineAuthors: 'warn',
+              onUntruncatedBlogPosts: 'warn',
+            }
           : false,
         theme: {
           customCss: './src/css/custom.css',
@@ -74,14 +75,8 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-   // image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'My Site',
-    // logo: {
-    //    alt: 'My Site Logo',
-    //    src: 'img/logo.svg',
-    //  },
       items: [
         {
           type: 'docSidebar',
@@ -89,11 +84,10 @@ const config: Config = {
           position: 'left',
           label: 'My projects',
         },
-        {
-          href: gitRepositoryUrl,
-          label: 'Github',
-          position: 'right',
-        },
+        ...(blogEnabled ? [{to: '/blog', label: 'Blog', position: 'left' as const}] : []),
+        ...(gitRepositoryUrl
+          ? [{href: gitRepositoryUrl, label: 'GitHub', position: 'right' as const}]
+          : []),
       ],
     },
     footer: {
@@ -102,27 +96,19 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/guides/intro',
-            },
-             {
-              label: 'Projects',
-              to: '/docs/projects/overview',
-            },
+            {label: 'Tutorial', to: '/docs/guides/intro'},
+            {label: 'Projects', to: '/docs/projects/overview'},
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'GitHub',
-              href: gitRepositoryUrl,
-            },
+            ...(blogEnabled ? [{label: 'Blog', to: '/blog'}] : []),
+            ...(gitRepositoryUrl ? [{label: 'GitHub', href: gitRepositoryUrl}] : []),
             {
               label: 'Template',
               href: 'https://github.com/Developer-Akademie-DevSecOpsKurs/dev-blog-template',
-            }
+            },
           ],
         },
       ],
@@ -133,7 +119,6 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
       additionalLanguages: ['powershell', 'hcl'],
       magicComments: [
-        // Remember to extend the default highlight class name as well!
         {
           className: 'theme-code-block-highlighted-line',
           line: 'highlight-next-line',
@@ -147,16 +132,5 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 };
-
-
-if (blogEnabled) {
-  (config.themeConfig.navbar as any).items.push({to: '/blog', label: 'Blog', position: 'left'});
-  (
-    config.themeConfig.footer as any
-  ).links[2].items.push({
-    to: '/blog',
-    label: 'Blog',
-  });
-}
 
 export default config;
