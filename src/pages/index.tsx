@@ -1,43 +1,54 @@
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
+import type {ReactNode} from 'react';
+import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import Contact from '@site/src/components/contact';
+import Footer from '@site/src/components/footer';
+import Header from '@site/src/components/header';
+import Hero from '@site/src/components/hero';
+import MySkills from '@site/src/components/my-skills';
+import ProjectHighlights from '@site/src/components/project-highlights';
+import {
+  DOCS_PATH,
+  NAV_ITEMS,
+  OWNER_INTRO,
+  OWNER_NAME,
+  OWNER_PHOTO,
+  OWNER_SUBTITLE,
+  PROJECTS,
+  SKILLS,
+} from '@site/src/data/portfolio';
 
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/projects/overview">
-            To my Projects
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
+function readCustomField(fields: Record<string, unknown>, key: string): string | undefined {
+  const value = fields[key];
+  return typeof value === 'string' && value.length > 0 ? value : undefined;
 }
 
-export default function Home(): JSX.Element {
+export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
+  const fields = siteConfig.customFields ?? {};
+
   return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+    <Layout title="Portfolio" description={`${OWNER_NAME} – ${OWNER_SUBTITLE}`} noFooter>
+      <Head>
+        <body className="portfolio-page" />
+      </Head>
+      <Header navItems={NAV_ITEMS} />
       <main>
-        <HomepageFeatures />
+        <Hero name={OWNER_NAME} subtitle={OWNER_SUBTITLE} intro={OWNER_INTRO} photo={OWNER_PHOTO} />
+        <MySkills skills={SKILLS} />
+        <ProjectHighlights
+          projects={PROJECTS}
+          skills={SKILLS}
+          moreProjectsPath={DOCS_PATH}
+          githubProfileUrl={readCustomField(fields, 'githubProfileUrl')}
+        />
+        <Contact
+          email={readCustomField(fields, 'contactEmail')}
+          linkedinUrl={readCustomField(fields, 'linkedinUrl')}
+        />
       </main>
+      <Footer name={OWNER_NAME} legalPath="/legal-notice" />
     </Layout>
   );
 }
