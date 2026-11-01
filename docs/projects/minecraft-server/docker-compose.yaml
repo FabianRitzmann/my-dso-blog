@@ -1,0 +1,19 @@
+services:
+  mc-server:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    environment:
+      SERVER_PORT: "8888"
+      MAX_MEMORY: "1024M"
+      MIN_MEMORY: "1024M"
+      DIFFICULTY: "hard"
+      GAME_MODE: "survival"
+      MAX_PLAYERS: "5"
+
+    volumes:
+      - minecraft-data:/minecraft
+
+volumes:
+  minecraft-data:
