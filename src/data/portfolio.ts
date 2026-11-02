@@ -11,13 +11,19 @@ export interface Skill {
 }
 
 export interface Project {
+  /** Eindeutiger Schlüssel. Muss zu den Keys in customFields.githubProjectUrls passen. */
+  id: string;
   title: string;
   description: string;
   image: string;
   skillIds: string[];
   docPath: string;
-  repoName?: string;
 }
+
+/** So viele Projekte sind auf Desktop in der Liste anklickbar. */
+export const MAX_HIGHLIGHTS_DESKTOP = 5;
+/** So viele Projekt-Karten erscheinen auf Mobile untereinander. */
+export const MAX_HIGHLIGHTS_MOBILE = 3;
 
 export const OWNER_NAME = 'Fabian Ritzmann';
 export const OWNER_SUBTITLE = 'Business Informatics';
@@ -129,6 +135,7 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: 'juice-shop',
     title: 'Juice Shop Meister',
     description:
       'Write-ups for challenges in the intentionally vulnerable OWASP Juice Shop, including broken authentication, two-factor authentication and server-side XSS protection.',
@@ -137,6 +144,7 @@ export const PROJECTS: Project[] = [
     docPath: '/docs/projects/Juice%20Shop%20Master/',
   },
   {
+    id: 'minecraft',
     title: 'Minecraft',
     description:
       'A Minecraft Java Edition server running in Docker on a cloud VM. I wrote the Compose setup, kept the configuration in environment variables and documented the deployment.',
@@ -145,6 +153,7 @@ export const PROJECTS: Project[] = [
     docPath: DOCS_PATH,
   },
   {
+    id: 'baby-tools',
     title: 'Baby Tools',
     description:
       'A small web project from my training. The write-up in my documentation shows the idea, the implementation and what I learned.',
@@ -153,6 +162,7 @@ export const PROJECTS: Project[] = [
     docPath: DOCS_PATH,
   },
   {
+    id: 'truck-signs-api',
     title: 'Truck Signs API',
     description:
       'I containerized the Truck Signs API with a Dockerfile, a Compose file driven by environment variables, an entrypoint script and a README, and deployed it to a cloud VM.',
@@ -161,6 +171,7 @@ export const PROJECTS: Project[] = [
     docPath: DOCS_PATH,
   },
   {
+    id: 'wordpress',
     title: 'WordPress hosten',
     description:
       'WordPress with MariaDB in a Docker Compose setup, configured through an env file and documented in a README.',
