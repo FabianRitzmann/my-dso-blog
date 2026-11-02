@@ -1,7 +1,6 @@
 .section {
   background: var(--pf-dark);
   padding: 4rem 1.5rem 5rem;
-  scroll-margin-top: 1rem;
 }
 
 .inner {
@@ -16,25 +15,90 @@
   color: #fff;
 }
 
+/* ---------- Desktop: Grid mit Flip-Karten, Slider und Punkte aus ---------- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
   gap: 1.5rem;
 }
 
+.track,
+.dots {
+  display: none;
+}
+
+/* ---------- Mobile: Slider mit je einer Karte pro 3 Skills ---------- */
 @media (max-width: 800px) {
   .section {
     padding: 3rem 1rem 3.5rem;
   }
 
   .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    display: none;
+  }
+
+  /* Negativer Rand + Padding: die nächste Karte schaut am Bildschirmrand heraus. */
+  .track {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slide {
+    display: flex;
+    flex: 0 0 90%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.75rem;
+    box-sizing: border-box;
+    padding: 1.75rem 1.25rem;
+    border-radius: 30px;
+    background: var(--pf-project-card);
+    scroll-snap-align: start;
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 35%);
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+  }
+
+  /* Der aktive Punkt ist eine Pille. */
+  .dotActive {
+    width: 1.6rem;
+    background: #fff;
+  }
+
+  .dot:focus-visible {
+    outline: 2px solid var(--pf-blue-soft);
+    outline-offset: 3px;
   }
 }
 
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    transition: none;
   }
 }
