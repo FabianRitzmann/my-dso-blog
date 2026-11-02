@@ -24,6 +24,20 @@ function readCustomField(fields: Record<string, unknown>, key: string): string |
   return typeof value === 'string' && value.length > 0 ? value : undefined;
 }
 
+/** Liest customFields.githubProjectUrls ({projekt-id: url}) und wirft leere Einträge weg. */
+function readProjectUrls(fields: Record<string, unknown>): Record<string, string> {
+  const raw = fields['githubProjectUrls'];
+  const result: Record<string, string> = {};
+  if (raw && typeof raw === 'object') {
+    for (const [id, url] of Object.entries(raw as Record<string, unknown>)) {
+      if (typeof url === 'string' && url.length > 0) {
+        result[id] = url;
+      }
+    }
+  }
+  return result;
+}
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   const fields = siteConfig.customFields ?? {};
@@ -42,6 +56,7 @@ export default function Home(): ReactNode {
           skills={SKILLS}
           moreProjectsPath={DOCS_PATH}
           githubProfileUrl={readCustomField(fields, 'githubProfileUrl')}
+          githubProjectUrls={readProjectUrls(fields)}
         />
         <Contact
           email={readCustomField(fields, 'contactEmail')}
