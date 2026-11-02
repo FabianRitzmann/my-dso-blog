@@ -39,11 +39,15 @@ const config: Config = {
 
   // Values read by the portfolio page (src/pages/index.tsx)
   customFields: {
-    contactEmail: process.env.CONTACT_EMAIL,
-    linkedinUrl: process.env.LINKEDIN_URL,
-    legalNotice: process.env.LEGAL_NOTICE,
-    githubProfileUrl: githubOrg ? `https://github.com/${githubOrg}` : undefined,
-    repositoryUrl: gitRepositoryUrl || undefined,
+    githubProfileUrl: process.env.GITHUB_PROFILE_URL,
+    githubProjectUrls: {
+      'juice-shop':      process.env.GITHUB_URL_JUICE_SHOP,
+      'minecraft':       process.env.GITHUB_URL_MINECRAFT,
+      'baby-tools':      process.env.GITHUB_URL_BABY_TOOLS,
+      'truck-signs-api': process.env.GITHUB_URL_TRUCK_SIGNS,
+      'wordpress':       process.env.GITHUB_URL_WORDPRESS,
+    },
+    // contactEmail, linkedinUrl usw. bleiben wie sie sind
   },
 
   presets: [
