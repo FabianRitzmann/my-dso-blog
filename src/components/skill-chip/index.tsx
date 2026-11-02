@@ -11,7 +11,7 @@ export default function SkillChip({skill}: SkillChipProps): ReactNode {
   const iconUrl = useBaseUrl(skill.icon);
 
   return (
-    <li className={styles.chip}>
+    <li className={styles.chip} title={skill.label}>
       <img className={styles.icon} src={iconUrl} alt="" width={22} height={22} />
       <span className={styles.label}>{skill.label}</span>
     </li>
