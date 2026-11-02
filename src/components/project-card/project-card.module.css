@@ -1,14 +1,16 @@
 .card {
+  box-sizing: border-box;
+  height: 100%;
   padding: 1.5rem;
   border-radius: 20px;
   background: var(--pf-project-card);
 }
 
+/* Fixed layout: title left, three equally sized skill chips right. Nothing grows with the content. */
 .top {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21rem;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem 1.5rem;
   margin-bottom: 1.25rem;
 }
@@ -20,9 +22,20 @@
   color: #fff;
 }
 
+/* Die Nummer steht nur auf Mobile im Titel, auf Desktop zeigt sie schon die Liste links. */
+.number {
+  display: inline;
+}
+
+@media (min-width: 801px) {
+  .number {
+    display: none;
+  }
+}
+
 .chips {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.4rem;
   margin: 0;
   padding: 0;
@@ -66,6 +79,10 @@
 @media (max-width: 640px) {
   .card {
     padding: 1.1rem;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
   }
 
   .body {

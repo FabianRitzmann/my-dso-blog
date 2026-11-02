@@ -7,17 +7,21 @@ import styles from './project-card.module.css';
 
 interface ProjectCardProps {
   project: Project;
+  index: number;
   skills: Skill[];
   githubUrl?: string;
 }
 
-export default function ProjectCard({project, skills, githubUrl}: ProjectCardProps): ReactNode {
+export default function ProjectCard({project, index, skills, githubUrl}: ProjectCardProps): ReactNode {
   const imageUrl = useBaseUrl(project.image);
 
   return (
-    <article className={styles.card} aria-live="polite">
+    <article className={styles.card}>
       <div className={styles.top}>
-        <h3 className={styles.title}>{project.title}</h3>
+        <h3 className={styles.title}>
+          <span className={styles.number}>{index + 1}. </span>
+          {project.title}
+        </h3>
         <ul className={styles.chips} aria-label="Skills used in this project">
           {skills.map((skill) => (
             <SkillChip key={skill.id} skill={skill} />
