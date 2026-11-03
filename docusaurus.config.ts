@@ -102,9 +102,9 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'Tutorial', to: '/docs/guides/intro'},
-            {label: 'Projects', to: '/docs/projects/overview'},
-          ],
+          {label: 'Docusaurus Learning Journal', to: '/docs/projects/Docusaurus-Learning-Journal/docusaurus-blog'},
+          {label: 'Projects', to: '/docs/projects/overview'},
+        ],
         },
         {
           title: 'More',
