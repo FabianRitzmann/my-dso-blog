@@ -47,6 +47,7 @@ export default function Home(): ReactNode {
       <Head>
         <body className="portfolio-page" />
       </Head>
+      <div id="top" />
       <Header navItems={NAV_ITEMS} />
       <main>
         <Hero name={OWNER_NAME} subtitle={OWNER_SUBTITLE} intro={OWNER_INTRO} photo={OWNER_PHOTO} />
@@ -61,6 +62,7 @@ export default function Home(): ReactNode {
         <Contact
           email={readCustomField(fields, 'contactEmail')}
           linkedinUrl={readCustomField(fields, 'linkedinUrl')}
+          githubUrl={readCustomField(fields, 'githubProfileUrl')}
         />
       </main>
       <Footer name={OWNER_NAME} legalPath="/legal-notice" />

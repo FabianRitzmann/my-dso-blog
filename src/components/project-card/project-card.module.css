@@ -6,10 +6,10 @@
   background: var(--pf-project-card);
 }
 
-/* Fixed layout: title left, three equally sized skill chips right. Nothing grows with the content. */
+/* Fixed layout: title and equally sized skill chips. Nothing grows with the content. */
 .top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 21rem;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 0.75rem 1.5rem;
   margin-bottom: 1.25rem;
@@ -35,10 +35,16 @@
 
 .chips {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.4rem;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
+}
+
+@media (min-width: 1100px) {
+  .top {
+    grid-template-columns: minmax(0, 1fr) 30rem;
+  }
 }
 
 .body {
@@ -65,7 +71,7 @@
 
 .description {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.55;
 }
 
@@ -79,10 +85,6 @@
 @media (max-width: 640px) {
   .card {
     padding: 1.1rem;
-  }
-
-  .top {
-    grid-template-columns: 1fr;
   }
 
   .body {

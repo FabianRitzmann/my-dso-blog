@@ -65,7 +65,7 @@
 }
 
 .label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1.25;
   text-align: center;
 }
@@ -79,7 +79,7 @@
 .list {
   margin: 0;
   padding-left: 1.1rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1.45;
 }
 

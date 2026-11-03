@@ -1,6 +1,6 @@
 .row {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
+  grid-template-columns: 6rem minmax(0, 1fr);
   align-items: center;
   gap: 0.9rem;
 }
@@ -20,7 +20,7 @@
 }
 
 .label {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
   color: #fff;
@@ -30,7 +30,7 @@
 .list {
   margin: 0;
   padding-left: 1.1rem;
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.4;
   color: #fff;
 }

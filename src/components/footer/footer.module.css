@@ -32,10 +32,10 @@
 
 .copy {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .legal {
   color: var(--pf-blue-soft);
-  font-size: 0.75rem;
+  font-size: 1rem;
 }

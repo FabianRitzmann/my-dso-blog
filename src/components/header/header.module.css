@@ -28,7 +28,7 @@
 
 .link {
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
 }
@@ -71,7 +71,7 @@
 
 .menuLink {
   color: var(--pf-blue);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
 }

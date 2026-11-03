@@ -6,7 +6,7 @@
 
 .inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 22rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem;
   max-width: var(--pf-width);
   margin: 0 auto;
@@ -21,14 +21,14 @@
 
 .text {
   margin: 0 0 0.5rem;
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .list {
   margin: 0;
   padding-left: 1.2rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -37,7 +37,14 @@
   font-size: 1.15rem;
 }
 
+.right {
+  justify-self: end;
+}
+
 .links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -65,7 +72,7 @@
 .mail,
 .profile {
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .profile {
@@ -86,5 +93,13 @@
   .inner {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .right {
+    justify-self: start;
+  }
+
+  .links {
+    align-items: flex-start;
   }
 }

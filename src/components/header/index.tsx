@@ -66,7 +66,6 @@ export default function Header({navItems}: HeaderProps): ReactNode {
   return (
     <header
       className={`${styles.header} ${hidden ? styles.hidden : ''}`}
-      id="top"
       onKeyDown={handleKeyDown}
       onFocus={() => setHidden(false)}>
       <div className={styles.inner}>
