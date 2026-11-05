@@ -1,0 +1,113 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1.25rem 1.5rem;
+  background: var(--pf-green);
+  transition: transform 0.3s ease;
+}
+
+.hidden {
+  transform: translateY(-100%);
+}
+
+/* Same container as all other sections, so the links line up with the page content. */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--pf-width);
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.5rem;
+}
+
+.link {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.link:focus-visible,
+.burger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.burger {
+  display: none;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 12rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+  text-align: center;
+}
+
+.menuLink {
+  color: var(--pf-blue);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.menuLink:hover {
+  color: var(--pf-blue);
+  text-decoration: underline;
+}
+
+.menuLink:focus-visible {
+  outline: 2px solid var(--pf-blue);
+  outline-offset: 4px;
+}
+
+@media (max-width: 800px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 801px) {
+  .menu {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
+}

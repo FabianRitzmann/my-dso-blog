@@ -1,0 +1,97 @@
+.card {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: var(--pf-project-card);
+}
+
+/* Fixed layout: title and equally sized skill chips. Nothing grows with the content. */
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Die Nummer steht nur auf Mobile im Titel, auf Desktop zeigt sie schon die Liste links. */
+.number {
+  display: inline;
+}
+
+@media (min-width: 801px) {
+  .number {
+    display: none;
+  }
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1100px) {
+  .top {
+    grid-template-columns: minmax(0, 1fr) 30rem;
+  }
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.description {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.1rem;
+  }
+
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}

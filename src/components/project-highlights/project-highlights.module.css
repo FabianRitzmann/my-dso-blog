@@ -1,0 +1,143 @@
+.section {
+  background: var(--pf-green);
+  padding: 4rem 1.5rem 5rem;
+}
+
+.inner {
+  max-width: var(--pf-width);
+  margin: 0 auto;
+}
+
+.heading {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ---------- Mobile (Standard): Karten untereinander, keine Liste ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'cards'
+    'more';
+  gap: 1.5rem;
+}
+
+.tabs {
+  display: none;
+}
+
+.cards {
+  grid-area: cards;
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cardItem {
+  display: block;
+  min-width: 0;
+}
+
+.more {
+  grid-area: more;
+  justify-self: start;
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.more:hover {
+  color: #fff;
+}
+
+.more:focus-visible,
+.tab:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+  .section {
+    padding: 3rem 1rem 3.5rem;
+  }
+
+  /* Ab dem 4. Projekt: nur in der Desktop-Liste, nicht als Mobile-Karte. */
+  .desktopOnly {
+    display: none;
+  }
+}
+
+/* ---------- Desktop: Liste links, eine Karte rechts ---------- */
+@media (min-width: 801px) {
+  .layout {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      'tabs cards'
+      'more cards';
+    column-gap: 2.5rem;
+    row-gap: 1.25rem;
+  }
+
+  .tabs {
+    grid-area: tabs;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tab {
+    padding: 0.25rem 0;
+    border: 0;
+    background: none;
+    color: rgba(255, 255, 255, 0.75);
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .tab:hover {
+    color: #fff;
+  }
+
+  .tabActive {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+
+  .more {
+    align-self: start;
+  }
+
+  /*
+   * Alle Karten liegen in derselben Grid-Zelle übereinander.
+   * Der Container ist dadurch immer so hoch wie die höchste Karte,
+   * und beim Wechseln springt nichts im Layout.
+   */
+  .cards {
+    grid-auto-rows: auto;
+    gap: 0;
+  }
+
+  .cardItem {
+    grid-area: 1 / 1;
+    visibility: hidden;
+  }
+
+  .cardItemActive {
+    visibility: visible;
+  }
+}

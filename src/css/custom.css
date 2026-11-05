@@ -1,3 +1,7 @@
+@import '@fontsource/quicksand/400.css';
+@import '@fontsource/quicksand/500.css';
+@import '@fontsource/quicksand/700.css';
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -27,4 +31,46 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+
+/* ---- Portfolio design tokens (taken from the Figma design) ---- */
+:root {
+  --pf-green: #027a67;
+  --pf-deep: #0a383f;
+  --pf-dark: #262e34;
+  --pf-card: #303d47;
+  --pf-blue: #266ad9;
+  --pf-blue-soft: #91c9f3;
+  --pf-panel: #55769c;
+  --pf-project-card: #2f4563;
+  --pf-text: #ffffff;
+  --pf-width: 70rem;
+  --pf-font: 'Quicksand', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* The home page ships its own header and footer, so the Docusaurus navbar is hidden there. */
+.portfolio-page {
+  background: var(--pf-dark);
+  color: var(--pf-text);
+  font-family: var(--pf-font);
+}
+
+.portfolio-page .navbar {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Anchor targets stop below the sticky header. */
+.portfolio-page section[id] {
+  scroll-margin-top: 4rem;
 }

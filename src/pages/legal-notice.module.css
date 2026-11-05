@@ -1,0 +1,50 @@
+.page {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+  font-family: var(--pf-font);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.title {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.heading {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.page p {
+  margin: 0 0 0.25rem;
+}
+
+.text {
+  margin-bottom: 0.75rem;
+}
+
+.page a {
+  color: var(--pf-blue-soft);
+  text-decoration: underline;
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--pf-blue-soft);
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .page {
+    padding: 3rem 1rem 4rem;
+  }
+}

@@ -1,0 +1,105 @@
+.section {
+  background: var(--pf-dark);
+  padding: 4rem 1.5rem 3rem;
+  scroll-margin-top: 1rem;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem;
+  max-width: var(--pf-width);
+  margin: 0 auto;
+}
+
+.heading {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.text {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.lead {
+  margin: 0.75rem 0 1.5rem;
+  font-size: 1.15rem;
+}
+
+.right {
+  justify-self: end;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1.5px solid #4fd1b5;
+  border-radius: 50%;
+  background: var(--pf-green);
+  color: #fff;
+}
+
+.mail,
+.profile {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.profile {
+  text-decoration: underline;
+}
+
+.mail:focus-visible,
+.profile:focus-visible {
+  outline: 2px solid var(--pf-blue-soft);
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .section {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .right {
+    justify-self: start;
+  }
+
+  .links {
+    align-items: flex-start;
+  }
+}
